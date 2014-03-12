@@ -1,0 +1,18 @@
+<h1><%= @hill.name %></h1>
+<p id="notice"><%= notice %></p>
+
+<p><strong>ID: </strong><%= @hill.id %></p>
+<p><strong>Number: </strong><%= @hill.number %></p>
+<p><strong>Other info: </strong><%= @hill.other_info %></p>
+<p><strong>Origin: </strong><%= @hill.origin %></p>
+<p><strong>Chapter: </strong><%= @hill.chapter %></p>
+<p><strong>Height: </strong><%= @hill.height %></p>
+<p><strong>Grid ref: </strong><%= @hill.grid_ref %></p>
+<p><strong>Map:</strong><%= @hill.map %></p>
+
+<% if current_user.admin? %>
+	<%= link_to 'Edit', edit_hill_path(@hill) %> |
+	<%= link_to "Delete", @hill, method: :delete,
+                                  data: { confirm: "You sure?" } %> |
+<% end %>
+<%= link_to 'Back', hills_path %>

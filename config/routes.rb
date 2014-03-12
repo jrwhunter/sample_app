@@ -5,11 +5,16 @@ SampleApp::Application.routes.draw do
       get :following, :followers
     end
   end
+  
+  resources :hills do
+    collection { post :import }
+  end
+  
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
  
-  root  'static_pages#home'
+  root  'hills#index'
 
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'

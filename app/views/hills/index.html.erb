@@ -1,0 +1,22 @@
+<% provide(:title, 'All hills') %>
+<h1>All hills</h1>
+<%= render 'category_choice' %>
+<table id="theTable" class="tablesorter">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Name</th>
+      <th>Other info</th>
+      <th>Origin</th>
+      <th>Chapter</th>
+      <th>Height</th>
+      <th>Grid ref</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody class="hills">
+  	<%= render @hills %>
+  </tbody>
+<table>
+<%= render 'import' %>

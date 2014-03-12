@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304125127) do
+ActiveRecord::Schema.define(version: 20140309182626) do
+
+  create_table "hills", force: true do |t|
+    t.string   "number"
+    t.string   "name"
+    t.string   "other_info"
+    t.string   "origin"
+    t.string   "chapter"
+    t.string   "height"
+    t.string   "grid_ref"
+    t.string   "map"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "group"
+  end
+
+  add_index "hills", ["number"], name: "index_hills_on_number", unique: true
 
   create_table "microposts", force: true do |t|
     t.string   "content"
