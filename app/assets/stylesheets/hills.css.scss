@@ -10,9 +10,14 @@ tr.over {
 	background-color: #8797B7;
 }
 
+tr.selected {
+	background-color: #FF55FF; 
+}
+
 td {
 	border-bottom: 1px solid #C2C8D4;
 	padding: 5px;
+	width: 50px
 }
 
 th {
@@ -22,6 +27,7 @@ th {
 	padding-left: 20px;
 	background-color: #626975;
 	height: 40px;
+	width: 50px
 }
 
 th.background {
@@ -44,13 +50,6 @@ th.sortUp {
 	background-position: right center;
 }
 
-th.sortDown {
-	background-color: #626975; 
-	background-image: url(image_path("desc.gif"));
-	background-repeat: no-repeat;
-	background-position: right center;
-}
-
 #parent {
 	overflow: hidden; /* clear the float */
 	/*min-width:100px; width: auto !important; width: 100px;*/
@@ -60,10 +59,4 @@ th.sortDown {
 	float: left;
 	width: 200px;}
 
-#column_check {
-	padding: 1em 1em;
-}
-
-#theTable {
-	margin-left:200px;}
 

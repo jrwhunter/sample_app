@@ -1,22 +1,68 @@
-<% provide(:title, 'All hills') %>
-<h1>All hills</h1>
-<%= render 'category_choice' %>
-<table id="theTable" class="tablesorter">
-  <thead>
-    <tr>
-      <th>Number</th>
-      <th>Name</th>
-      <th>Other info</th>
-      <th>Origin</th>
-      <th>Chapter</th>
-      <th>Height</th>
-      <th>Grid ref</th>
-      <th></th>
-    </tr>
-  </thead>
+<div id='caption'>
+<h1>Hills</h1>
+</div>
 
-  <tbody class="hills">
-  	<%= render @hills %>
-  </tbody>
-<table>
-<%= render 'import' %>
+<div id="parent">
+
+<div id="accordion">
+
+<% if (signed_in? && !current_user.admin) %>
+
+<h3>Mates</h3>
+<div>
+ <div id='hill_names'>
+ </div>
+<%= render 'display_mates' %>
+</div>
+
+  <h3>Edit climbs</h3>
+  <div>
+    <form action= <%= "#{update_multiple_ascents_path}" %> remote='true' method='post'/>
+      <input id= 'hidden_hill_ids' name='hill_ids' type='hidden' value=''/>
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <label name='climbed_label'>Climbed</label>
+      <input name='climbed' checked='true' type='checkbox' value='climbed'/>
+      <label name='date_label'>Date</label>
+      <input name='date' value= '<%= @todayvariable %>' type='date' />
+      <label name='notes_label'>Notes</label>
+      <textarea name='notes' value='Notes'></textarea>
+      <input name='submit', value= 'Make changes', type='submit' />
+    </form>
+  </div>
+<% end %>
+
+
+<h3>Columns</h3>
+<div id="column_check">
+  <input type="checkbox" name="column_check" value="NUMBER" checked="checked"/>NUMBER<br/>
+  <input type="checkbox" name="column_check" value="NAME" checked="checked"/>NAME<br/>
+  <% if (signed_in? && !current_user.admin) %>
+    <input type="checkbox" name="column_check" value="DATE" checked="checked"/>DATE<br/>
+    <input type="checkbox" name="column_check" value="NOTES" checked="checked"/>NOTES<br/>
+  <% end %>
+  <input type="checkbox" name="column_check" value="HEIGHT" checked="checked"/>HEIGHT<br/>
+  <input type="checkbox" name="column_check" value="OTHER INFO" checked="checked"/>OTHER INFO<br/>
+  <input type="checkbox" name="column_check" value="ORIGIN" checked="checked"/>ORIGIN<br/>
+  <input type="checkbox" name="column_check" value="CHAPTER" checked="checked"/>CHAPTER<br/>
+  <input type="checkbox" name="column_check" value="GRID REF" checked="checked"/>GRID REF<br/>
+</div>
+
+</div>
+
+<div>
+  <div class='button-group'>
+		<button class='category_button' value='Munros'>Munros</button>
+    <button class='category_button' value='Munro Tops'>Munro Tops</button>
+    <button class='category_button' value='Corbetts'>Corbetts</button>
+    <button class='category_button' value='Grahams'>Grahams</button>
+  </div>
+    <% if (signed_in? && !current_user.admin) %>
+      <div class='button_group'>
+      <button class='select_button' value = 'All'>All</button>
+      <button class='select_button' value = 'Climbed'>Climbed</button>
+      <button class='select_button' value = 'To do'>To do</button>
+    <% end %>
+  </div>
+<%= render 'hill_table' %>
+</div>
+</div>

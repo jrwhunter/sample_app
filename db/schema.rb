@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140309182626) do
+ActiveRecord::Schema.define(version: 20140327143537) do
+
+  create_table "ascents", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "hill_id"
+    t.date     "date"
+    t.string   "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "climbed"
+  end
+
+  add_index "ascents", ["hill_id"], name: "index_ascents_on_hill_id"
+  add_index "ascents", ["user_id", "hill_id"], name: "index_ascents_on_user_id_and_hill_id", unique: true
+  add_index "ascents", ["user_id"], name: "index_ascents_on_user_id"
 
   create_table "hills", force: true do |t|
     t.string   "number"
@@ -25,6 +39,7 @@ ActiveRecord::Schema.define(version: 20140309182626) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "group"
+    t.string   "category"
   end
 
   add_index "hills", ["number"], name: "index_hills_on_number", unique: true

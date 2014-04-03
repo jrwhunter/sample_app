@@ -10,4 +10,8 @@ module ApplicationHelper
     end
   end
 
+  # Turns the name of the category of hill (Munros, etc) into
+  #   a pattern for filtering hills in the database
+
+
 end

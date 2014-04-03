@@ -1,3 +1,5 @@
+require "csv"
+
 class User < ActiveRecord::Base
   
   has_many :microposts, dependent: :destroy
@@ -8,6 +10,9 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :followed_users, through: :relationships, source: :followed
 
+  has_many :ascents, dependent: :destroy
+  has_many :hills, through: :ascents, source: :hill
+  
 	before_save { self.email = email.downcase }
 	before_create :create_remember_token
 
