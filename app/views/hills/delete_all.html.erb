@@ -1,0 +1,7 @@
+<h1> Delete Hills </h1>
+<%= form_tag destroy_all_hills_path, method: "delete", multipart: true do %>
+<%= render 'category_select' %>
+<%= radio_button_tag(:category, "All") %>
+<%= label_tag(:category_all, "All") %>
+<%= submit_tag "Delete" %>
+<% end %>

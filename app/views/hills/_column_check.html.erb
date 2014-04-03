@@ -1,0 +1,13 @@
+<div id="column_check">
+  <input type="checkbox" name="column_check" value="ID" checked="checked"/>NUMBER<br/>
+  <input type="checkbox" name="column_check" value="NAME" checked="checked"/>NAME<br/>
+  <% if signed_in? && !current_user.admin %>
+    <input type="checkbox" name="column_check" value="DATE" checked="checked"/>DATE<br/>
+    <input type="checkbox" name="column_check" value="NOTES" checked="checked"/>NOTES<br/>
+  <%end%>
+  <input type="checkbox" name="column_check" value="HEIGHT" checked="checked"/>HEIGHT<br/>
+  <input type="checkbox" name="column_check" value="OTHER INFO" checked="checked"/>OTHER INFO<br/>
+  <input type="checkbox" name="column_check" value="ORIGIN" checked="checked"/>ORIGIN<br/>
+  <input type="checkbox" name="column_check" value="CHAPTER" checked="checked"/>CHAPTER<br/>
+  <input type="checkbox" name="column_check" value="GRID REF" checked="checked"/>GRID REF<br/>
+</div>

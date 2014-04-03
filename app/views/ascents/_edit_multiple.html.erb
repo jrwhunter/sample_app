@@ -1,0 +1,18 @@
+<div id="edit_multiple">
+  <%= form_for :ascent, :url => update_multiple_ascents_path, :html => { :method => :put } do |form| %>
+
+ 	<%= hidden_field_tag(:hill_ids) %>
+
+    <%= form.label "climbed" %> 
+    <%= check_box_tag :climbed, "climbed", true%>
+
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+
+    <%= form.label :notes %>
+    <%= form.text_field :notes %>
+
+    <%= form.submit "Submit" %>
+
+<% end %>
+</div>
